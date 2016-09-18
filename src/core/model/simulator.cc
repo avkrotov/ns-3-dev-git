@@ -21,7 +21,7 @@
 #include "simulator.h"
 #include "simulator-impl.h"
 #include "scheduler.h"
-#include "map-scheduler.h"
+#include "priority-queue-scheduler.h"
 #include "event-impl.h"
 #include "des-metrics.h"
 
@@ -73,7 +73,7 @@ static GlobalValue g_simTypeImpl = GlobalValue
  */
 static GlobalValue g_schedTypeImpl = GlobalValue ("SchedulerType",
                                                   "The object class to use as the scheduler implementation",
-                                                  TypeIdValue (MapScheduler::GetTypeId ()),
+                                                  TypeIdValue (PriorityQueueScheduler::GetTypeId ()),
                                                   MakeTypeIdChecker ());
 
 /**

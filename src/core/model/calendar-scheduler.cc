@@ -230,30 +230,6 @@ CalendarScheduler::RemoveNext (void)
 }
 
 void
-CalendarScheduler::Remove (const Event &ev)
-{
-  NS_LOG_FUNCTION (this << &ev);
-  NS_ASSERT (!IsEmpty ());
-  // bucket index of event
-  uint32_t bucket = Hash (ev.key.m_ts);
-
-  Bucket::iterator end = m_buckets[bucket].end ();
-  for (Bucket::iterator i = m_buckets[bucket].begin (); i != end; ++i)
-    {
-      if (i->key.m_uid == ev.key.m_uid)
-        {
-          NS_ASSERT (ev.impl == i->impl);
-          m_buckets[bucket].erase (i);
-
-          m_qSize--;
-          ResizeDown ();
-          return;
-        }
-    }
-  NS_ASSERT (false);
-}
-
-void
 CalendarScheduler::ResizeUp (void)
 {
   NS_LOG_FUNCTION (this);

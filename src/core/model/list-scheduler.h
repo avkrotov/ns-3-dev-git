@@ -62,7 +62,6 @@ public:
   virtual bool IsEmpty (void) const;
   virtual Scheduler::Event PeekNext (void) const;
   virtual Scheduler::Event RemoveNext (void);
-  virtual void Remove (const Scheduler::Event &ev);
 
 private:
   /** Event list type: a simple list of Events. */

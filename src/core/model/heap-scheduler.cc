@@ -223,25 +223,4 @@ HeapScheduler::RemoveNext (void)
   return next;
 }
 
-
-void
-HeapScheduler::Remove (const Event &ev)
-{
-  NS_LOG_FUNCTION (this << &ev);
-  uint32_t uid = ev.key.m_uid;
-  for (uint32_t i = 1; i < m_heap.size (); i++)
-    {
-      if (uid == m_heap[i].key.m_uid)
-        {
-          NS_ASSERT (m_heap[i].impl == ev.impl);
-          Exch (i, Last ());
-          m_heap.pop_back ();
-          TopDown (i);
-          return;
-        }
-    }
-  NS_ASSERT (false);
-}
-
 } // namespace ns3
-

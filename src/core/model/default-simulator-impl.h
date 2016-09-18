@@ -67,7 +67,6 @@ public:
   virtual void ScheduleWithContext (uint32_t context, const Time &delay, EventImpl *event);
   virtual EventId ScheduleNow (EventImpl *event);
   virtual EventId ScheduleDestroy (EventImpl *event);
-  virtual void Remove (const EventId &id);
   virtual void Cancel (const EventId &id);
   virtual bool IsExpired (const EventId &id) const;
   virtual void Run (void);

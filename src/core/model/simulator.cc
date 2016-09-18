@@ -308,16 +308,6 @@ Simulator::ScheduleDestroy (void (*f)(void))
 }
 
 void
-Simulator::Remove (const EventId &id)
-{
-  if (*PeekImpl () == 0)
-    {
-      return;
-    }
-  return GetImpl ()->Remove (id);
-}
-
-void
 Simulator::Cancel (const EventId &id)
 {
   if (*PeekImpl () == 0)
@@ -406,4 +396,3 @@ Simulator::GetImplementation (void)
 
 
 } // namespace ns3
-

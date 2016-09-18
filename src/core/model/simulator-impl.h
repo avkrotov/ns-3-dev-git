@@ -71,8 +71,6 @@ public:
   virtual EventId ScheduleNow (EventImpl *event) = 0;
   /** \copydoc Simulator::ScheduleDestroy(const Ptr<EventImpl>&) */
   virtual EventId ScheduleDestroy (EventImpl *event) = 0;
-  /** \copydoc Simulator::Remove */
-  virtual void Remove (const EventId &id) = 0;
   /** \copydoc Simulator::Cancel */
   virtual void Cancel (const EventId &id) = 0;
   /** \copydoc Simulator::IsExpired */

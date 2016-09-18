@@ -92,20 +92,4 @@ ListScheduler::RemoveNext (void)
   return next;
 }
 
-void
-ListScheduler::Remove (const Event &ev)
-{
-  NS_LOG_FUNCTION (this << &ev);
-  for (EventsI i = m_events.begin (); i != m_events.end (); i++)
-    {
-      if (i->key.m_uid == ev.key.m_uid)
-        {
-          NS_ASSERT (ev.impl == i->impl);
-          m_events.erase (i);
-          return;
-        }
-    }
-  NS_ASSERT (false);
-}
-
 } // namespace ns3

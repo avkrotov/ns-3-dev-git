@@ -85,15 +85,10 @@ public:
      */
     CANCEL_ON_DESTROY = (1 << 3),
     /**
-     * This policy removes the event from the simulation event list
-     * when the destructor of the Timer is invoked.
-     */
-    REMOVE_ON_DESTROY = (1 << 4),
-    /**
      * This policy enforces a check from the destructor of the Timer
      * to verify that the timer has already expired.
      */
-    CHECK_ON_DESTROY = (1 << 5)
+    CHECK_ON_DESTROY = (1 << 4)
   };
   /** The possible states of the Timer. */
   enum State
@@ -212,11 +207,6 @@ public:
    * otherwise.
    */
   void Cancel (void);
-  /**
-   * Remove from the simulation event-list the currently-running event
-   * if there is one. Do nothing otherwise.
-   */
-  void Remove (void);
   /**
    * \return \c true if there is no currently-running event,
    * \c false otherwise.

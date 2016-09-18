@@ -100,13 +100,4 @@ MapScheduler::RemoveNext (void)
   return ev;
 }
 
-void
-MapScheduler::Remove (const Event &ev)
-{
-  NS_LOG_FUNCTION (this << ev.impl << ev.key.m_ts << ev.key.m_uid);
-  EventMapI i = m_list.find (ev.key);
-  NS_ASSERT (i->second == ev.impl);
-  m_list.erase (i);
-}
-
 } // namespace ns3

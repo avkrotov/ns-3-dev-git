@@ -325,39 +325,6 @@ DefaultSimulatorImpl::GetDelayLeft (const EventId &id) const
 }
 
 void
-DefaultSimulatorImpl::Remove (const EventId &id)
-{
-  if (id.GetUid () == 2)
-    {
-      // destroy events.
-      for (DestroyEvents::iterator i = m_destroyEvents.begin (); i != m_destroyEvents.end (); i++)
-        {
-          if (*i == id)
-            {
-              m_destroyEvents.erase (i);
-              break;
-            }
-        }
-      return;
-    }
-  if (IsExpired (id))
-    {
-      return;
-    }
-  Scheduler::Event event;
-  event.impl = id.PeekEventImpl ();
-  event.key.m_ts = id.GetTs ();
-  event.key.m_context = id.GetContext ();
-  event.key.m_uid = id.GetUid ();
-  m_events->Remove (event);
-  event.impl->Cancel ();
-  // whenever we remove an event from the event list, we have to unref it.
-  event.impl->Unref ();
-
-  m_unscheduledEvents--;
-}
-
-void
 DefaultSimulatorImpl::Cancel (const EventId &id)
 {
   if (!IsExpired (id))

@@ -709,45 +709,6 @@ RealtimeSimulatorImpl::GetDelayLeft (const EventId &id) const
 }
 
 void
-RealtimeSimulatorImpl::Remove (const EventId &id)
-{
-  if (id.GetUid () == 2)
-    {
-      // destroy events.
-      for (DestroyEvents::iterator i = m_destroyEvents.begin (); 
-           i != m_destroyEvents.end (); 
-           i++)
-        {
-          if (*i == id)
-            {
-              m_destroyEvents.erase (i);
-              break;
-            }
-        }
-      return;
-    }
-  if (IsExpired (id))
-    {
-      return;
-    }
-
-  {
-    CriticalSection cs (m_mutex);
-
-    Scheduler::Event event;
-    event.impl = id.PeekEventImpl ();
-    event.key.m_ts = id.GetTs ();
-    event.key.m_context = id.GetContext ();
-    event.key.m_uid = id.GetUid ();
-
-    m_events->Remove (event);
-    m_unscheduledEvents--;
-    event.impl->Cancel ();
-    event.impl->Unref ();
-  }
-}
-
-void
 RealtimeSimulatorImpl::Cancel (const EventId &id)
 {
   if (IsExpired (id) == false)

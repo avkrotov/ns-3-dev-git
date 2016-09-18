@@ -64,10 +64,6 @@ Timer::~Timer ()
     {
       m_event.Cancel ();
     }
-  else if (m_flags & REMOVE_ON_DESTROY)
-    {
-      Simulator::Remove (m_event);
-    }
   delete m_impl;
 }
 
@@ -110,12 +106,6 @@ Timer::Cancel (void)
 {
   NS_LOG_FUNCTION (this);
   Simulator::Cancel (m_event);
-}
-void
-Timer::Remove (void)
-{
-  NS_LOG_FUNCTION (this);
-  Simulator::Remove (m_event);
 }
 bool
 Timer::IsExpired (void) const
@@ -179,7 +169,7 @@ Timer::Suspend (void)
   NS_LOG_FUNCTION (this);
   NS_ASSERT (IsRunning ());
   m_delayLeft = Simulator::GetDelayLeft (m_event);
-  Simulator::Remove (m_event);
+  m_event.Cancel ();
   m_flags |= TIMER_SUSPENDED;
 }
 

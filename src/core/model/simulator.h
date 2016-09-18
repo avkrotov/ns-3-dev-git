@@ -1066,20 +1066,6 @@ public:
   /** @} */
 
   /**
-   * Remove an event from the event list. 
-   * 
-   * This method has the same visible effect as the 
-   * ns3::EventId::Cancel method
-   * but its algorithmic complexity is much higher: it has often 
-   * O(log(n)) complexity, sometimes O(n), sometimes worse.
-   * Note that it is not possible to remove events which were scheduled
-   * for the "destroy" time. Doing so will result in a program error (crash).
-   *
-   * @param [in] id The event to remove from the list of scheduled events.
-   */
-  static void Remove (const EventId &id);
-
-  /**
    * Set the cancel bit on this event: the event's associated function
    * will not be invoked when it expires.
    *

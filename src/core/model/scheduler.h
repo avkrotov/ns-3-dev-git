@@ -127,14 +127,6 @@ public:
    * \return The Event.
    */
   virtual Event RemoveNext (void) = 0;
-  /**
-   * Remove a specific event from the event list.
-   *
-   * This method cannot be invoked if the list is empty.
-   *
-   * \param [in] ev The event to remove
-   */
-  virtual void Remove (const Event &ev) = 0;
 };
 
 /**

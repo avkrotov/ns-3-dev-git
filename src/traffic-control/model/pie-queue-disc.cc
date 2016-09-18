@@ -120,7 +120,7 @@ PieQueueDisc::DoDispose (void)
 {
   NS_LOG_FUNCTION (this);
   m_uv = 0;
-  Simulator::Remove (m_rtrsEvent);
+  m_rtrsEvent.Cancel ();
   QueueDisc::DoDispose ();
 }
 

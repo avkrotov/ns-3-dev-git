@@ -23,6 +23,7 @@
 #include "ns3/heap-scheduler.h"
 #include "ns3/map-scheduler.h"
 #include "ns3/calendar-scheduler.h"
+#include "ns3/priority-queue-scheduler.h"
 
 using namespace ns3;
 
@@ -474,6 +475,8 @@ public:
     factory.SetTypeId (HeapScheduler::GetTypeId ());
     AddTestCase (new SimulatorEventsTestCase (factory), TestCase::QUICK);
     factory.SetTypeId (CalendarScheduler::GetTypeId ());
+    AddTestCase (new SimulatorEventsTestCase (factory), TestCase::QUICK);
+    factory.SetTypeId (PriorityQueueScheduler::GetTypeId ());
     AddTestCase (new SimulatorEventsTestCase (factory), TestCase::QUICK);
   }
 } g_simulatorTestSuite;

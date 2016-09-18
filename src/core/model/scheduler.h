@@ -212,6 +212,18 @@ inline bool operator < (const Scheduler::Event &a,
   return a.key < b.key;
 }
 
+/**
+ * Compare (greater than) two events by Event.
+ *
+ * \param [in] a The first event.
+ * \param [in] b The second event.
+ * \returns \c true if \c a > \c b
+ */
+inline bool operator > (const Scheduler::Event &a,
+                        const Scheduler::Event &b)
+{
+  return a.key > b.key;
+}
 
 } // namespace ns3
 
